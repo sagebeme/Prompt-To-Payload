@@ -9,6 +9,7 @@ Its "email" is fake: messages are only printed and written to sent_emails.log.
 """
 
 import json
+import os
 from pathlib import Path
 
 import anthropic
@@ -17,7 +18,8 @@ from day10_ask_the_manual import load_sections, search
 
 MODEL = "claude-opus-5"
 HERE = Path(__file__).parent
-INBOX_PATH = HERE / "inbox.json"
+# Day 13 swaps in a different inbox: INBOX_FILE=inbox_poisoned.json python day11_agent.py
+INBOX_PATH = HERE / os.environ.get("INBOX_FILE", "inbox.json")
 SENT_LOG = HERE / "sent_emails.log"
 MAX_STEPS = 10
 

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prompt to Payload · Day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#F2F4F6; --surface:#FFFFFF; --surface-2:#E8ECF0; --ink:#15202B; --muted:#56626F; --line:#D3DAE1;
+  --accent:#2446C9; --l1:#0E8A7B; --l2:#2446C9; --l3:#7A3FC0; --l4:#C2362F;
+  --code-bg:#15202B; --code-ink:#E4EAF0; --quote-bg:#FFF7E6; --quote-line:#E0A526;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E1419; --surface:#161F27; --surface-2:#1E2933; --ink:#E3E9EF; --muted:#98A5B2; --line:#2B3843;
+    --accent:#7F9BFF; --l1:#3CC7B4; --l2:#7F9BFF; --l3:#B88AF0; --l4:#FF7A70;
+    --code-bg:#0A0F13; --code-ink:#DCE4EC; --quote-bg:#2A2314; --quote-line:#D9A23A;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1419; --surface:#161F27; --surface-2:#1E2933; --ink:#E3E9EF; --muted:#98A5B2; --line:#2B3843;
+  --accent:#7F9BFF; --l1:#3CC7B4; --l2:#7F9BFF; --l3:#B88AF0; --l4:#FF7A70;
+  --code-bg:#0A0F13; --code-ink:#DCE4EC; --quote-bg:#2A2314; --quote-line:#D9A23A;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.65;padding-inline:20px;-webkit-text-size-adjust:100%}
+img{max-width:100%}
+.wrap{max-width:760px;margin:0 auto}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-20px;padding:10px 20px}
+.topbar .inner{max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.topbar a.home{font-family:var(--display);font-weight:800;text-decoration:none;color:var(--ink);font-size:16px}
+.topbar a.home span{color:var(--l4)}
+.meter{flex:1;max-width:260px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.meter .bar{flex:1;height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.meter .bar span{display:block;height:100%;width:0;background:var(--lv,var(--accent));transition:width .3s ease}
+
+article{padding-block:32px 24px}
+.eyebrow{font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--lv,var(--muted))}
+#content h1{font-family:var(--display);font-size:clamp(34px,7vw,52px);font-weight:800;line-height:1.1;letter-spacing:-.01em;text-wrap:balance;margin:6px 0 10px}
+#content h1 + p{color:var(--muted);font-size:16px;font-family:var(--display)}
+#content h2{font-family:var(--display);font-size:26px;line-height:1.2;margin:40px 0 12px;padding-top:18px;border-top:1px solid var(--line);text-wrap:balance}
+#content h3{font-family:var(--display);font-size:20px;margin:28px 0 8px}
+#content p,#content ul,#content ol{margin:0 0 14px}
+#content li{margin-bottom:4px}
+#content blockquote{margin:18px 0;background:var(--quote-bg);border-left:3px solid var(--quote-line);padding:14px 18px;border-radius:0 8px 8px 0}
+#content blockquote p:last-child{margin-bottom:0}
+#content code{font-family:var(--mono);font-size:.84em;background:var(--surface-2);padding:1px 5px;border-radius:4px}
+.pre-wrap{position:relative;margin:0 0 16px}
+#content pre{margin:0;background:var(--code-bg);color:var(--code-ink);font-family:var(--mono);font-size:13.5px;line-height:1.6;padding:16px;padding-top:36px;border-radius:8px;overflow-x:auto}
+#content pre code{background:none;padding:0;font-size:inherit;color:inherit}
+.copy{position:absolute;top:8px;right:8px;font-family:var(--display);font-size:12px;font-weight:700;background:transparent;color:var(--code-ink);border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:3px 9px;cursor:pointer}
+.table-wrap{overflow-x:auto;margin:0 0 16px}
+#content table{border-collapse:collapse;width:100%;font-size:16px;background:var(--surface)}
+#content th,#content td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+#content th{font-family:var(--display);background:var(--surface-2)}
+#content li.task{list-style:none;margin-left:-22px;display:flex;gap:10px;align-items:flex-start}
+#content li.task input{width:18px;height:18px;margin-top:5px;flex:0 0 auto;accent-color:var(--lv,var(--accent));cursor:pointer}
+#content li.task.done > span{color:var(--muted);text-decoration:line-through}
+#content details{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:0 0 16px}
+#content summary{font-family:var(--display);font-weight:700;cursor:pointer}
+#content details[open] summary{margin-bottom:10px}
+
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--line);padding-block:24px 48px}
+.pager a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.pager a:hover{border-color:var(--accent)}
+.pager small{display:block;font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pager strong{font-family:var(--display);font-size:16px}
+.pager .next{text-align:right;grid-column:2}
+.notice{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+@media (max-width:520px){body{font-size:17px}.meter{max-width:140px}}
+@media (prefers-reduced-motion:reduce){.meter .bar span{transition:none}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="inner">
+    <a class="home" href="index.html#programme">Prompt to <span>Payload</span></a>
+    <div class="meter" aria-label="Today's progress"><div class="bar"><span id="bar"></span></div><span id="pct">0%</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <article>
+    <p class="eyebrow" id="eyebrow">Loading…</p>
+    <div id="content"></div>
+  </article>
+  <nav class="pager" id="pager" aria-label="Other days"></nav>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/18.0.13/lib/marked.umd.min.js"></script>
+<script src="assets/days.js"></script>
+<script>
+(function () {
+  var days = window.P2P_DAYS;
+  var params = new URLSearchParams(location.search);
+  var n = parseInt(params.get("day"), 10);
+  if (!(n >= 1 && n <= days.length)) n = 1;
+  var meta = days[n - 1];
+  var levelVar = "var(--l" + meta.level + ")";
+  document.documentElement.style.setProperty("--lv", levelVar);
+  document.title = "Day " + n + ": " + meta.title + " · Prompt to Payload";
+  document.getElementById("eyebrow").textContent =
+    "Day " + n + " of " + days.length + " · Level " + meta.level + ": " + window.P2P_LEVELS[meta.level];
+
+  var content = document.getElementById("content");
+  var file = "days/day-" + String(n).padStart(2, "0") + ".md";
+
+  fetch(file)
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (md) {
+      content.innerHTML = marked.parse(md);
+      enhance();
+    })
+    .catch(function () {
+      content.innerHTML =
+        '<div class="notice"><p><strong>This lesson couldn\'t load.</strong></p>' +
+        '<p>If you opened this file directly from your computer, browsers block it from reading the lesson files. ' +
+        'Run <code>python3 -m http.server 8000</code> in the course folder, then open ' +
+        '<code>http://localhost:8000</code>.</p><p>You can also read it directly: <a href="' + file + '">' + file + '</a></p></div>';
+    });
+
+  function enhance() {
+    // Links written for GitHub (../code/x.py) point one folder up; fix them for the site.
+    content.querySelectorAll('a[href^="../"]').forEach(function (a) {
+      a.setAttribute("href", a.getAttribute("href").replace(/^\.\.\//, ""));
+    });
+    content.querySelectorAll('a[href^="http"]').forEach(function (a) {
+      a.target = "_blank"; a.rel = "noopener";
+    });
+
+    content.querySelectorAll("table").forEach(function (t) {
+      var w = document.createElement("div"); w.className = "table-wrap";
+      t.parentNode.insertBefore(w, t); w.appendChild(t);
+    });
+
+    content.querySelectorAll("pre").forEach(function (pre) {
+      var w = document.createElement("div"); w.className = "pre-wrap";
+      pre.parentNode.insertBefore(w, pre); w.appendChild(pre);
+      var b = document.createElement("button"); b.type = "button"; b.className = "copy"; b.textContent = "Copy";
+      b.addEventListener("click", function () {
+        var text = pre.innerText;
+        function fallback() {
+          var r = document.createRange(); r.selectNodeContents(pre);
+          var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+          b.textContent = "Press Ctrl+C";
+        }
+        try {
+          navigator.clipboard.writeText(text).then(function () {
+            b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1500);
+          }, fallback);
+        } catch (e) { fallback(); }
+      });
+      w.appendChild(b);
+    });
+
+    // Turn the markdown task lists into saved checkboxes.
+    var store = window.P2P_PROGRESS;
+    var state = store.load();
+    var boxes = Array.prototype.slice.call(content.querySelectorAll('li > input[type="checkbox"]'));
+    var saved = state[String(n)] || [];
+    boxes.forEach(function (box, i) {
+      var li = box.parentNode;
+      li.classList.add("task");
+      // Wrap the item's text so it can be styled when done.
+      var span = document.createElement("span");
+      while (box.nextSibling) span.appendChild(box.nextSibling);
+      li.appendChild(span);
+      box.disabled = false;
+      box.id = "d" + n + "-t" + i;
+      box.setAttribute("aria-label", span.textContent.trim());
+      box.checked = !!saved[i];
+      li.classList.toggle("done", box.checked);
+      box.addEventListener("change", function () {
+        li.classList.toggle("done", box.checked);
+        state[String(n)] = boxes.map(function (b) { return b.checked; });
+        store.save(state);
+        meter();
+      });
+    });
+    if (!state[String(n)]) state[String(n)] = boxes.map(function () { return false; });
+    meter();
+
+    function meter() {
+      var pct = store.percent(state, n);
+      document.getElementById("bar").style.width = pct + "%";
+      document.getElementById("pct").textContent = pct + "%";
+    }
+  }
+
+  var pager = document.getElementById("pager");
+  if (n > 1) {
+    pager.insertAdjacentHTML("beforeend",
+      '<a class="prev" href="day.html?day=' + (n - 1) + '"><small>← Day ' + (n - 1) + '</small><strong></strong></a>');
+    pager.lastChild.querySelector("strong").textContent = days[n - 2].title;
+  }
+  if (n < days.length) {
+    pager.insertAdjacentHTML("beforeend",
+      '<a class="next" href="day.html?day=' + (n + 1) + '"><small>Day ' + (n + 1) + ' →</small><strong></strong></a>');
+    pager.lastChild.querySelector("strong").textContent = days[n].title;
+  }
+})();
+</script>
+</body>
+</html>

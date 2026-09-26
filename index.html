@@ -146,6 +146,18 @@ pre{margin:0;background:var(--code-bg);color:var(--code-ink);font-family:var(--m
 .rules h3{font-size:22px;color:var(--l4)}
 .rules ol{margin:0;padding-left:22px;display:grid;gap:6px;font-size:17px}
 
+/* 15-day programme */
+.programme{display:grid;gap:14px;scroll-margin-top:64px}
+.programme h2{font-size:30px}
+.day-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:6px}
+.day-card{display:grid;gap:6px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--lv);border-radius:10px;padding:12px 14px}
+.day-card:hover{border-color:var(--lv)}
+.day-card .d{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--lv)}
+.day-card .d em{font-style:normal;color:var(--muted)}
+.day-card strong{font-family:var(--display);font-size:16px;line-height:1.25}
+.day-card .bar{height:4px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.day-card .bar span{display:block;height:100%;background:var(--lv)}
+
 /* capstone + resources */
 .capstone{display:grid;gap:14px}
 .capstone h2{font-size:34px}
@@ -160,6 +172,7 @@ pre{margin:0;background:var(--code-bg);color:var(--code-ink);font-family:var(--m
 .res a span{grid-column:1;font-size:15px;color:var(--muted);line-height:1.45}
 .res a em{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;font-family:var(--mono);font-size:12px;color:var(--muted)}
 footer{border-top:1px solid var(--line);padding-block:28px 48px;color:var(--muted);font-size:15px;display:grid;gap:8px}
+@media (min-width:700px){nav.levels .inner{flex-wrap:wrap}}
 @media (max-width:520px){
   body{font-size:17px}
   .module{padding:18px}
@@ -172,7 +185,7 @@ footer{border-top:1px solid var(--line);padding-block:28px 48px;color:var(--mute
 
 <div class="wrap">
 <header class="hero">
-  <p class="eyebrow">A course in four levels · roughly 8 weeks</p>
+  <p class="eyebrow">A course in four levels · 15 days</p>
   <h1>Prompt to <span>Payload</span></h1>
   <p class="lede">You already talk to AI every day. This course teaches you to talk to it well, then shows you how people trick it, and how to stop them.</p>
   <div class="chat" aria-label="Example conversation">
@@ -187,6 +200,7 @@ footer{border-top:1px solid var(--line);padding-block:28px 48px;color:var(--mute
 
 <nav class="levels" aria-label="Course levels">
   <div class="inner">
+    <a href="#programme"><i style="background:var(--ink)"></i>15-day plan</a>
     <a href="#level1"><i style="background:var(--l1)"></i>1 · Foundations <span class="pct" data-pct="1">0%</span></a>
     <a href="#level2"><i style="background:var(--l2)"></i>2 · Techniques <span class="pct" data-pct="2">0%</span></a>
     <a href="#level3"><i style="background:var(--l3)"></i>3 · Real systems <span class="pct" data-pct="3">0%</span></a>
@@ -202,8 +216,15 @@ footer{border-top:1px solid var(--line);padding-block:28px 48px;color:var(--mute
   <div class="promises">
     <div class="promise"><h3>Stories, not slides</h3><p>Each lesson opens with a situation you'll recognise, and many close with something that really happened.</p></div>
     <div class="promise"><h3>Hands on every time</h3><p>Every module has a prompt to try right now, in whatever AI you already use.</p></div>
-    <div class="promise"><h3>Tick as you go</h3><p>Mark modules done. Your progress is saved in this browser.</p></div>
+    <div class="promise"><h3>Tick as you go</h3><p>Each day has a to-do list. Your progress is saved in this browser.</p></div>
   </div>
+</section>
+
+<section class="programme" id="programme">
+  <p class="eyebrow">Day by day</p>
+  <h2>The 15-day programme</h2>
+  <p>Each day is one sitting of 1 to 3 hours: a story, a short lesson, a to-do list, exercises, and a few questions to check yourself. Levels 1 and 2 need nothing but an AI chat app. Level 3 introduces a little Python.</p>
+  <div class="day-grid" id="day-grid"></div>
 </section>
 
 <!-- LEVEL 1 -->
@@ -637,6 +658,24 @@ Start by asking what topic they're working on.</pre>
 </footer>
 </div>
 
+<script src="assets/days.js"></script>
+<script>
+(function(){
+  var grid = document.getElementById("day-grid");
+  if (!grid || !window.P2P_DAYS) return;
+  var state = window.P2P_PROGRESS.load();
+  window.P2P_DAYS.forEach(function(d){
+    var pct = window.P2P_PROGRESS.percent(state, d.day);
+    var a = document.createElement("a");
+    a.className = "day-card";
+    a.href = "day.html?day=" + d.day;
+    a.style.setProperty("--lv", "var(--l" + d.level + ")");
+    a.innerHTML = '<span class="d">Day ' + d.day + ' · L' + d.level + '<em>' + pct + '%</em></span><strong></strong><span class="bar"><span style="width:' + pct + '%"></span></span>';
+    a.querySelector("strong").textContent = d.title;
+    grid.appendChild(a);
+  });
+})();
+</script>
 <script>
 (function(){
   var KEY = "p2p-progress";

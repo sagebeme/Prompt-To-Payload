@@ -14,3 +14,4 @@ node_modules/
 
 # Course exercise output
 code/sent_emails.log
+code/audit.log

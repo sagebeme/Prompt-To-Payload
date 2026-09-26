@@ -1,0 +1,12 @@
+# Render Blueprint: deploys the course as a free static site.
+# In Render: New > Blueprint, then pick this repository.
+services:
+  - type: web
+    name: prompt-to-payload
+    runtime: static
+    buildCommand: echo "No build step needed"
+    staticPublishPath: .
+    headers:
+      - path: /days/*
+        name: Content-Type
+        value: text/markdown; charset=utf-8

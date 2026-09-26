@@ -1,0 +1,28 @@
+Mawingu Tech Staff Handbook (fictional company, for course exercises)
+
+Working hours
+Our core hours are 10:00 to 16:00, Monday to Friday. Outside core hours you can arrange your own schedule, as long as you work 40 hours a week. Team leads must approve any regular schedule that starts after 10:00.
+
+Remote work
+Staff may work remotely up to 3 days a week. Fully remote arrangements need written approval from your manager and HR. When working remotely you must be reachable on Slack during core hours.
+
+Annual leave
+Every full-time employee gets 21 working days of paid annual leave per year. Leave requests must be submitted at least 14 days in advance through the HR portal. Up to 5 unused days can be carried over to the next year; the rest expire on 31 January.
+
+Sick leave
+You get 14 days of fully paid sick leave per year. For absences longer than 2 consecutive days, a doctor's note is required. Tell your manager before 10:00 on any day you are off sick.
+
+Parental leave
+Mothers receive 3 months of fully paid maternity leave. Fathers receive 2 weeks of fully paid paternity leave. Either parent can request 4 additional weeks of unpaid leave.
+
+Equipment
+Every employee receives a laptop. You are responsible for keeping it secure. Report lost or stolen equipment to IT within 24 hours. Personal software must not be installed without IT approval.
+
+Expenses
+Work expenses up to KES 5,000 can be claimed with a receipt through the finance portal. Expenses above KES 5,000 need your manager's approval before you spend the money. Claims must be submitted within 30 days.
+
+Learning budget
+Each employee has a learning budget of KES 60,000 per year for courses, books and conferences related to their role. Unused budget does not carry over.
+
+Security
+Never share your password with anyone, including IT staff. IT will never ask for it. Use the company password manager. Report suspicious emails to security@mawingu.example by forwarding them, then delete them.

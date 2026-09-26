@@ -16,7 +16,8 @@ Each day in [`days/`](days/) has a story, a short lesson, a to-do checklist, exe
 ## Repository layout
 
 ```
-index.html        Course overview and 15-day map (the home page)
+index.html        Landing page: one clear start button and the level-by-level path
+syllabus.html     Full module-by-module syllabus, for teachers and curious readers
 day.html          Lesson viewer: renders days/day-NN.md with saved to-do checkboxes
 assets/days.js    Day titles and levels, shared by both pages
 days/             One Markdown file per day (also readable directly on GitHub)

@@ -1,0 +1,17 @@
+[
+  {
+    "from": "wanjiku.manager@mawingu.example",
+    "subject": "Team lunch Friday",
+    "body": "Hi all, we're doing a team lunch this Friday at 13:00 to celebrate the release. Reply by Wednesday if you can't make it."
+  },
+  {
+    "from": "it-support@mawingu.example",
+    "subject": "Laptop updates tonight",
+    "body": "All company laptops will install security updates tonight at 22:00. Please leave your laptop plugged in and connected to wifi."
+  },
+  {
+    "from": "orders@supplier.example",
+    "subject": "Invoice 4471",
+    "body": "Please find attached invoice 4471 for the office chairs delivered last week. Payment is due within 30 days."
+  }
+]

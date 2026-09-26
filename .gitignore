@@ -11,3 +11,6 @@ venv/
 # Deploy tooling
 .vercel/
 node_modules/
+
+# Course exercise output
+code/sent_emails.log

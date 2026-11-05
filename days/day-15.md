@@ -110,6 +110,23 @@ Send it to your partner **privately**.
 - Ask your partner to retest the fixed issues.
 - Mark each finding as **Fixed**, **Partly fixed** or **Accepted risk**.
 
+## Check yourself
+
+1. What are the five steps of a professional red-team engagement?
+2. Which two questions decide a finding's severity?
+3. Why log failed attempts as well as successful ones?
+4. You found a way to leak the flag. Where should the report go, and why there?
+
+<details>
+<summary>Answers</summary>
+
+1. Scope, recon, attack, report, disclose (then retest after fixes).
+2. Impact (what's the worst realistic outcome?) and likelihood (how easy is it, and how often does it work?).
+3. Failures show which defences held up, and the owner needs to hear that too.
+4. Privately to the system's owner, as agreed in the rules of engagement. Posting it publicly before it's fixed hands the attack to anyone who reads it.
+
+</details>
+
 ## Course wrap-up
 
 Your portfolio now contains:

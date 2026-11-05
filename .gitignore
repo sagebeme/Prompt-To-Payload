@@ -7,8 +7,10 @@ venv/
 # Secrets
 .env
 .env.*
+!.env.example
 
 # Deploy tooling
+_site/
 .vercel/
 node_modules/
 

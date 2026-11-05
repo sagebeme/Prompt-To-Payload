@@ -22,6 +22,8 @@ day.html          Lesson viewer: renders days/day-NN.md with saved to-do checkbo
 assets/days.js    Day titles and levels, shared by both pages
 days/             One Markdown file per day (also readable directly on GitHub)
 code/             Python exercises: API basics, RAG bot, agent, hardened agent
+SETUP.md          Setup for the Python days, and fixes for common errors
+tools/            build-pages.sh, which puts the site together for GitHub Pages
 ```
 
 The site is plain static files. There is no build step and nothing to install.
@@ -54,8 +56,9 @@ Push this repo to GitHub, then pick any host. Each one gives you a public URL to
 2. `netlify.toml` sets publish directory `.` with no build command.
 
 **GitHub Pages**
-1. Repository Settings → Pages → Deploy from a branch → `main`, folder `/ (root)`.
-2. The site appears at `https://<username>.github.io/Prompt-To-Payload/`.
+1. Repository Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+2. `.github/workflows/pages.yml` runs `tools/build-pages.sh` on every push to `main` and publishes only the site files (the pages, `assets/`, `days/` and `code/`).
+3. The site appears at https://sagebeme.github.io/Prompt-To-Payload/.
 
 Every push to `main` redeploys automatically on all four.
 
@@ -71,7 +74,7 @@ export ANTHROPIC_API_KEY="your-key"
 python day09_first_call.py
 ```
 
-See [Day 9](days/day-09.md) for the full setup. Never commit API keys; `.env` files are already ignored.
+See [Day 9](days/day-09.md) for the full setup, [SETUP.md](SETUP.md) for prerequisites and troubleshooting, and [`code/README.md`](code/README.md) for how to run each script. Never commit API keys; `.env` files are already ignored (copy `code/.env.example` to start one).
 
 ## Ethics
 

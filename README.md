@@ -54,8 +54,9 @@ Push this repo to GitHub, then pick any host. Each one gives you a public URL to
 2. `netlify.toml` sets publish directory `.` with no build command.
 
 **GitHub Pages**
-1. Repository Settings → Pages → Deploy from a branch → `main`, folder `/ (root)`.
-2. The site appears at `https://<username>.github.io/Prompt-To-Payload/`.
+1. Repository Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+2. `.github/workflows/pages.yml` runs `tools/build-pages.sh` on every push to `main` and publishes only the site files (the pages, `assets/`, `days/` and `code/`).
+3. The site appears at https://sagebeme.github.io/Prompt-To-Payload/.
 
 Every push to `main` redeploys automatically on all four.
 

@@ -49,6 +49,7 @@ To a language model, the developer's instructions and the user's message are all
 - [ ] Attack your own Day 7 assistant (exercise 2)
 - [ ] Attack your own HR agent (exercise 3)
 - [ ] Start your findings log (exercise 4)
+- [ ] Break the lab bot offline (exercise 5)
 - [ ] Journal
 
 ## Exercises
@@ -72,6 +73,14 @@ The second one probably worked immediately, with no trickery. That's a design fl
 |---|---|---|---|---|---|
 
 You'll turn these into a professional report on Day 15.
+
+**5. Break the lab bot.** [`code/lab/`](../code/lab/README.md) has Kazi, a small helpdesk bot with a fake inbox, fake documents and fake tools, built to be attacked on your own machine. Its `--stub` mode swaps the real model for a fake one that obeys every instruction it reads, so it needs no API key and costs nothing. From `code/lab/`:
+
+```bash
+python labbot.py --stub
+```
+
+Work through Part A of the [lab guide](../code/lab/README.md): override, fake authority, role-play, base64 obfuscation and prompt leaking. The flag is a fake discount code hidden in the system prompt. Then try the same inputs without `--stub`, against the real model, and compare. Add every result to your findings log. You'll come back to this bot on Days 13 to 15.
 
 ## Stretch
 

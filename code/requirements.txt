@@ -1,1 +1,3 @@
-anthropic
+# Verified: 2.5.0 is on PyPI and supports the output_config parameter the scripts use.
+# Needs Python 3.10 or newer.
+anthropic==2.5.0

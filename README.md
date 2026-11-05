@@ -22,6 +22,8 @@ day.html          Lesson viewer: renders days/day-NN.md with saved to-do checkbo
 assets/days.js    Day titles and levels, shared by both pages
 days/             One Markdown file per day (also readable directly on GitHub)
 code/             Python exercises: API basics, RAG bot, agent, hardened agent
+SETUP.md          Setup for the Python days, and fixes for common errors
+tools/            build-pages.sh, which puts the site together for GitHub Pages
 ```
 
 The site is plain static files. There is no build step and nothing to install.

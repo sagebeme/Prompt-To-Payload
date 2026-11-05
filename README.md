@@ -71,7 +71,7 @@ export ANTHROPIC_API_KEY="your-key"
 python day09_first_call.py
 ```
 
-See [Day 9](days/day-09.md) for the full setup. Never commit API keys; `.env` files are already ignored.
+See [Day 9](days/day-09.md) for the full setup, [SETUP.md](SETUP.md) for prerequisites and troubleshooting, and [`code/README.md`](code/README.md) for how to run each script. Never commit API keys; `.env` files are already ignored (copy `code/.env.example` to start one).
 
 ## Ethics
 

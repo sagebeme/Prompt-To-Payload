@@ -21,8 +21,9 @@ syllabus.html     Full module-by-module syllabus, for teachers and curious reade
 day.html          Lesson viewer: renders days/day-NN.md with saved to-do checkboxes
 assets/days.js    Day titles and levels, shared by both pages
 days/             One Markdown file per day (also readable directly on GitHub)
-code/             Python exercises: API basics, RAG bot, agent, hardened agent
+code/             Python exercises: API basics, RAG bot, agent, hardened agent, the lab bot (code/lab)
 SETUP.md          Setup for the Python days, and fixes for common errors
+SOURCES.md        Where the real incidents in the lessons come from, by day, with links
 tools/            build-pages.sh, which puts the site together for GitHub Pages
 ```
 

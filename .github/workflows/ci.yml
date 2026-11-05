@@ -1,0 +1,43 @@
+# Checks every push and pull request: the lab and capstone tests (stub mode, no API key)
+# and that the course website still builds.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Lab and capstone tests (stub mode)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: pip install -r code/lab/requirements-test.txt
+      - name: Check every script compiles
+        run: python -m py_compile code/*.py code/lab/*.py
+      - name: Run the tests
+        working-directory: code/lab
+        # Stub mode only. No API key is set, so nothing can reach the real API.
+        run: python -m pytest -v
+
+  site:
+    name: Website builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the site folder
+        run: tools/build-pages.sh _site
+      - name: Check the lab is published with the lessons
+        run: |
+          test -f _site/day.html
+          test -f _site/days/day-15.md
+          test -f _site/code/lab/README.md
+          test -f _site/code/lab/capstone/RUBRIC.md

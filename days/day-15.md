@@ -156,6 +156,7 @@ That's a real body of work you can show an employer or client.
 - Read the full [OWASP Top 10 for LLM Applications](https://genai.owasp.org).
 - Join AI security communities and capture-the-flag events.
 - Look for AI bug bounty programmes, and follow their rules exactly.
+- Read the primary sources for the incidents in this course, listed day by day in [SOURCES.md](../SOURCES.md).
 
 ## Final reflection
 

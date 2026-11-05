@@ -23,6 +23,7 @@ assets/days.js    Day titles and levels, shared by both pages
 days/             One Markdown file per day (also readable directly on GitHub)
 code/             Python exercises: API basics, RAG bot, agent, hardened agent
 SETUP.md          Setup for the Python days, and fixes for common errors
+SOURCES.md        Primary sources for the real incidents in the lessons, by day
 tools/            build-pages.sh, which puts the site together for GitHub Pages
 ```
 

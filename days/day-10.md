@@ -27,7 +27,7 @@ Three rules make RAG trustworthy:
 - **Cite** which chunk each fact came from, so people can check.
 - **Test retrieval separately.** If the wrong chunks are found, even a perfect model gives a wrong answer.
 
-> **This really happened (2024).** Air Canada's website chatbot told a grieving customer, Jake Moffatt, he could claim a bereavement discount after his trip. That wasn't the airline's policy. Air Canada argued the chatbot was responsible for its own words. A Canadian tribunal disagreed and ordered the airline to pay him. **Your bot's answers are your organisation's answers.**
+> **This really happened (2024).** Air Canada's website chatbot told a grieving customer, Jake Moffatt, he could claim a bereavement discount after his trip. That wasn't the airline's policy. Air Canada argued the chatbot was responsible for its own words. A Canadian tribunal disagreed and ordered the airline to pay him ([CBS News report](https://www.cbsnews.com/news/aircanada-chatbot-discount-customer)). **Your bot's answers are your organisation's answers.**
 
 **The hidden risk:** whatever is *inside* your documents ends up in the prompt. If someone can edit a document, they can talk to your AI. Remember this for Day 13.
 

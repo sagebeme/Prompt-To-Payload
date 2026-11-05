@@ -18,7 +18,7 @@ Understand what a language model really does, so you know when to trust it and w
 - **The context window** is everything the model can "see" right now: your messages, its replies, any files. It has no memory beyond that unless the app adds one. In a very long chat, early details can get lost.
 - **Tokens** are the chunks of text the model reads and writes, roughly ¾ of a word each in English. Limits and prices are counted in tokens.
 
-> **This really happened (2023).** In *Mata v. Avianca*, a New York lawyer filed a brief citing six court cases that ChatGPT had invented. When he asked it whether the cases were real, it said yes. The court fined him and a colleague $5,000.
+> **This really happened (2023).** In *Mata v. Avianca*, a New York lawyer filed a brief citing six court cases that ChatGPT had invented. When he asked it whether the cases were real, it said yes. The court fined him, a colleague and their law firm $5,000 ([the court's order](https://storage.courtlistener.com/recap/gov.uscourts.nysd.575368/gov.uscourts.nysd.575368.54.0.pdf)).
 
 ## To-do
 

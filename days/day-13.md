@@ -32,7 +32,7 @@ Understand how attackers reach an AI through the content it reads, run a safe in
 - This is often called the **confused deputy** problem. The agent has real permissions, and a stranger tricks it into using them.
 - **RAG poisoning** is the same idea applied to documents. Anyone who can edit a document your bot searches can talk to your bot.
 
-> **Where the idea took off (2022 to 2023).** In 2022, people found a Twitter bot for a remote-jobs site that replied to tweets using GPT-3. They tweeted "ignore previous instructions" followed by whatever they wanted it to say, and it obeyed in public. The term "prompt injection" was coined that year. In 2023, a research paper by Greshake and colleagues, *"Not what you've signed up for"*, showed the same attack working *indirectly*, through web pages and documents that AI assistants read.
+> **Where the idea took off (2022 to 2023).** In 2022, people found a Twitter bot for a remote-jobs site that replied to tweets using GPT-3. They tweeted "ignore the above" followed by whatever they wanted it to say, and it obeyed in public. The term "prompt injection" was [coined that year](https://simonwillison.net/2022/Sep/12/prompt-injection/). In 2023, a research paper by Greshake and colleagues, [*"Not what you've signed up for"*](https://arxiv.org/abs/2302.12173), showed the same attack working *indirectly*, through web pages and documents that AI assistants read.
 
 ## To-do
 

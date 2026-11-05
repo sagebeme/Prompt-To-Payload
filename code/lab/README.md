@@ -14,6 +14,7 @@ Everything here is pretend: the staff, the emails, the documents, the discount c
 | `data/inbox.json`, `data/inbox_poisoned.json` | The Day 11 and Day 13 inboxes |
 | `data/docs/` | Three company documents. One of them is poisoned |
 | `tests/` | Tests that show each attack working on `labbot.py` and failing on `defended_bot.py` |
+| `capstone/` | The Day 15 rubric and the tests to run against your own defended bot |
 
 ## Two modes
 
@@ -79,13 +80,13 @@ Open `data/inbox_poisoned.json` and `data/docs/supplier_update.txt` to see the h
    ```
 
    Add the five layers one at a time: least privilege on the leave tool, untrusted tags, a recipient allowlist plus `self.approve(...)` before sending, an output check for the flag and outside links, and `log()`. `defended_bot.py` shows one way to do each.
-3. Check it by replaying Parts A and B against `python my_bot.py --stub ...`.
+3. Replay Parts A and B against `python my_bot.py --stub ...`, then test it: `LAB_BOT=my_bot python -m pytest capstone` (see [`capstone/RUBRIC.md`](capstone/RUBRIC.md)).
 
 ## Run the tests
 
 ```bash
 pip install -r requirements-test.txt
-python -m pytest            # from code/lab/
+python -m pytest            # from code/lab/: the lab tests and the capstone tests
 ```
 
 The tests use stub mode only, so they need no key and cost nothing. The same tests run on every push in GitHub Actions.

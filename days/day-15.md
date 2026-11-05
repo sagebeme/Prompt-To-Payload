@@ -43,7 +43,7 @@ Red-team another learner's AI system the way a professional would, write a prope
 
 ## Step 1: Build (1 hour)
 
-Start from your Day 14 hardened agent or your AskTheManual bot, and make it your own:
+Start from your Day 14 hardened agent, your AskTheManual bot, or the [lab bot](../code/lab/README.md) from Day 12, and make it your own:
 - Give it a new purpose: a school helpdesk, a shop assistant, a clinic receptionist, anything.
 - Give it your own document or data (fake data only, never real personal information).
 - Give it at least **one tool that could cause harm if misused**, such as sending a message, booking something, or reading records.
@@ -109,6 +109,18 @@ Send it to your partner **privately**.
 - Fix your own bot using your partner's report, starting with the highest severity.
 - Ask your partner to retest the fixed issues.
 - Mark each finding as **Fixed**, **Partly fixed** or **Accepted risk**.
+
+## How it's graded
+
+The [capstone rubric](../code/lab/capstone/RUBRIC.md) says what **pass**, **good** and **excellent** look like for each step: rules of engagement, your bot, attack coverage, the report, disclosure and tests.
+
+If you built on the lab bot, run the automated checks against your own version, in stub mode, with no API key. From `code/lab/`:
+
+```bash
+LAB_BOT=my_bot python -m pytest capstone -v
+```
+
+They check, for example, that the poisoned email does not trigger the send tool and that legitimate requests still work. Passing them is the floor, not the finish line: your partner's attacks on a real model are the real test.
 
 ## Check yourself
 

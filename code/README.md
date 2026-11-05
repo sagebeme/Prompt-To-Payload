@@ -10,7 +10,7 @@ The Python exercises for Level 3 (Real systems) and Level 4 (Security). Days 1�
 | `day10_ask_the_manual.py` | Day 10 | AskTheManual, a small question-answering bot over `manual.txt` (RAG with simple word matching) |
 | `day11_agent.py` | Days 11–13 | An HR assistant agent with tools. Deliberately trusting, so you can attack it |
 | `day14_agent_hardened.py` | Day 14 | The same agent with five layers of defence, each marked `LAYER 1`–`LAYER 5` |
-| `lab/` | Days 12–15 | Kazi, a vulnerable helpdesk bot with a `--stub` mode that needs no API key, its defended version and tests. See [`lab/README.md`](lab/README.md) |
+| `lab/` | Days 12–15 | Kazi, a vulnerable helpdesk bot with a `--stub` mode that needs no API key, its defended version, tests and the capstone rubric. See [`lab/README.md`](lab/README.md) |
 | `manual.txt` | Days 10–14 | The fictional Mawingu Tech staff handbook |
 | `inbox.json` | Day 11 | A normal inbox for the agent to read |
 | `inbox_poisoned.json` | Days 13–14 | The same inbox with a hidden instruction in one email |
@@ -59,7 +59,8 @@ Run them from this folder, with the virtual environment active and the key set. 
 | 14 | `INBOX_FILE=inbox_poisoned.json python day14_agent_hardened.py` | Replay your attacks. The agent asks before sending email. Check `audit.log` afterwards |
 | 12–14 | `cd lab && python labbot.py --stub` | The lab bot with the fake model: no key, no cost. Add `--inbox inbox_poisoned.json` for Day 13; drop `--stub` to use Claude |
 | 14 | `cd lab && python defended_bot.py --stub --inbox inbox_poisoned.json` | The lab bot with the five layers. See which layer stops each attack |
-| 14, 15 | `cd lab && python -m pytest` | Runs the lab tests in stub mode (needs `pip install -r lab/requirements-test.txt`) |
+| 14, 15 | `cd lab && python -m pytest` | Runs the lab and capstone tests in stub mode (needs `pip install -r lab/requirements-test.txt`) |
+| 15 | `cd lab && LAB_BOT=my_bot python -m pytest capstone` | Checks your own defended bot against the capstone tests |
 
 On Windows PowerShell, set the inbox first: `$env:INBOX_FILE="inbox_poisoned.json"; python day11_agent.py`.
 

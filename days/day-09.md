@@ -37,6 +37,8 @@ pip install -r requirements.txt
 export ANTHROPIC_API_KEY="your-key-here"   # Windows PowerShell: $env:ANTHROPIC_API_KEY="your-key-here"
 ```
 
+Stuck, or want a `.env` file instead? See [Setup and troubleshooting](../SETUP.md) for getting a key safely and fixing common errors.
+
 ## To-do
 
 - [ ] Complete setup and run `code/day09_first_call.py`

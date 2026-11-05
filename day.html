@@ -133,8 +133,10 @@ article{padding-block:32px 24px}
 
   function enhance() {
     // Links written for GitHub (../code/x.py) point one folder up; fix them for the site.
+    // Repo docs such as ../SETUP.md read best on GitHub, which renders the Markdown.
     content.querySelectorAll('a[href^="../"]').forEach(function (a) {
-      a.setAttribute("href", a.getAttribute("href").replace(/^\.\.\//, ""));
+      var path = a.getAttribute("href").replace(/^\.\.\//, "");
+      a.setAttribute("href", /\.md$/.test(path) ? "https://github.com/sagebeme/Prompt-To-Payload/blob/main/" + path : path);
     });
     content.querySelectorAll('a[href^="http"]').forEach(function (a) {
       a.target = "_blank"; a.rel = "noopener";

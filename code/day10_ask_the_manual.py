@@ -13,7 +13,7 @@ from pathlib import Path
 
 import anthropic
 
-MODEL = "claude-opus-5"
+MODEL = "claude-opus-5-5"
 MANUAL_PATH = Path(__file__).parent / "manual.txt"
 
 client = anthropic.Anthropic()

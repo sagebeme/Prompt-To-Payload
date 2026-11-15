@@ -16,7 +16,7 @@ import anthropic
 
 from day10_ask_the_manual import load_sections, search
 
-MODEL = "claude-opus-5"
+MODEL = "claude-opus-5-5"
 HERE = Path(__file__).parent
 # Day 13 swaps in a different inbox: INBOX_FILE=inbox_poisoned.json python day11_agent.py
 INBOX_PATH = HERE / os.environ.get("INBOX_FILE", "inbox.json")

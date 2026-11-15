@@ -16,7 +16,7 @@ import anthropic
 from day10_ask_the_manual import search
 from day11_agent import INBOX_PATH, LEAVE_BALANCES, MAX_STEPS, SECTIONS, SENT_LOG
 
-MODEL = "claude-opus-5"
+MODEL = "claude-opus-5-5"
 CURRENT_USER = "E001"
 COMPANY_DOMAIN = "mawingu.example"
 AUDIT_LOG = Path(__file__).parent / "audit.log"

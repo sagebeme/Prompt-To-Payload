@@ -1,0 +1,4 @@
+# Tools for checking the course code. Learners only need requirements.txt.
+-r requirements.txt
+pytest==9.2.0
+ruff==0.17.5

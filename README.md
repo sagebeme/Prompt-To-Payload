@@ -22,6 +22,7 @@ day.html          Lesson viewer: renders days/day-NN.md with saved to-do checkbo
 assets/days.js    Day titles and levels, shared by both pages
 days/             One Markdown file per day (also readable directly on GitHub)
 code/             Python exercises: API basics, RAG bot, agent, hardened agent
+CODING-RULES.md   How we write code in this course (read before Day 9)
 ```
 
 The site is plain static files. There is no build step and nothing to install.
@@ -72,6 +73,17 @@ python day09_first_call.py
 ```
 
 See [Day 9](days/day-09.md) for the full setup. Never commit API keys; `.env` files are already ignored.
+
+Before you change any script, read [How we write code in this course](CODING-RULES.md). When you've changed one, run the checks from `code/`:
+
+```bash
+pip install -r requirements-dev.txt   # once: adds Ruff and pytest
+ruff check .                          # finds likely mistakes
+ruff format --check .                 # checks the layout (`ruff format .` fixes it)
+pytest                                # runs the tests in code/tests/
+```
+
+All three must pass before you call an exercise done. GitHub runs the same checks on every push.
 
 ## Ethics
 

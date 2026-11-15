@@ -6,7 +6,7 @@ Needs the ANTHROPIC_API_KEY environment variable (see days/day-09.md).
 
 import anthropic
 
-MODEL = "claude-opus-5"
+MODEL = "claude-opus-5-5"
 
 # Reads ANTHROPIC_API_KEY from the environment. Never paste your key into code.
 client = anthropic.Anthropic()

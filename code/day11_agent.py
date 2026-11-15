@@ -16,7 +16,7 @@ import anthropic
 
 from day10_ask_the_manual import load_sections, search
 
-MODEL = "claude-opus-5"
+MODEL = "claude-opus-5-5"
 HERE = Path(__file__).parent
 # Day 13 swaps in a different inbox: INBOX_FILE=inbox_poisoned.json python day11_agent.py
 INBOX_PATH = HERE / os.environ.get("INBOX_FILE", "inbox.json")
@@ -121,11 +121,13 @@ def run_agent(messages: list) -> str:
         for block in response.content:
             if block.type == "tool_use":
                 print(f"  [tool] {block.name}({json.dumps(block.input)})")
-                results.append({
-                    "type": "tool_result",
-                    "tool_use_id": block.id,
-                    "content": run_tool(block.name, block.input),
-                })
+                results.append(
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": block.id,
+                        "content": run_tool(block.name, block.input),
+                    }
+                )
         # All tool results go back together in one user message.
         messages.append({"role": "user", "content": results})
 

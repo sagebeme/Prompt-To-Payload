@@ -1,0 +1,17 @@
+# Tool settings for the course code. Learners don't need these; see requirements-dev.txt.
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"  # Day 9 asks for Python 3.10 or newer.
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+# The formatter keeps code within line-length. The lines it can't wrap are prompt
+# text and f-strings, and splitting those would change what the model or user sees.
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# The scripts import each other by bare name (day11 imports day10), so tests
+# need the code/ folder on the import path, as when running a script from here.
+pythonpath = ["."]

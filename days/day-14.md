@@ -66,7 +66,9 @@ What about `https://evil.example/steal?x=mawingu.example`? Or `https://mawingu.e
 
 </details>
 
-Fix it so only URLs whose **hostname** is exactly `mawingu.example`, or ends in `.mawingu.example`, are kept. Python's `urllib.parse.urlparse(url).hostname` will help. Then test your fix with both hint URLs.
+Prove the bug before you fix it ([rule 7](../CODING-RULES.md)): add a test to `code/tests/test_day14_agent_hardened.py` that passes both hint URLs to `clean_output()` and asserts they come back as `[external link removed]`. Run `pytest` from `code/` and watch it fail.
+
+Then fix it so only URLs whose **hostname** is exactly `mawingu.example`, or ends in `.mawingu.example`, are kept. Python's `urllib.parse.urlparse(url).hostname` will help. Run `pytest` again: your new test should pass, and so should all the others.
 
 **3. Measure the difference.** Run the "Summarise my inbox" attack 5 times against the Day 11 agent and 5 times against the Day 14 agent. Record how often each one:
 - looked up other employees

@@ -121,11 +121,13 @@ def run_agent(messages: list) -> str:
         for block in response.content:
             if block.type == "tool_use":
                 print(f"  [tool] {block.name}({json.dumps(block.input)})")
-                results.append({
-                    "type": "tool_result",
-                    "tool_use_id": block.id,
-                    "content": run_tool(block.name, block.input),
-                })
+                results.append(
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": block.id,
+                        "content": run_tool(block.name, block.input),
+                    }
+                )
         # All tool results go back together in one user message.
         messages.append({"role": "user", "content": results})
 

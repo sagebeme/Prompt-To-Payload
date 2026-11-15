@@ -45,17 +45,17 @@ def search(question: str, sections: list[str], top_k: int = 3) -> list[tuple[int
 
 def answer(question: str, sections: list[str]) -> str:
     found = search(question, sections)
-    context = "\n\n".join(
-        f'<section number="{i}">\n{text}\n</section>' for i, text in found
-    )
+    context = "\n\n".join(f'<section number="{i}">\n{text}\n</section>' for i, text in found)
     response = client.messages.create(
         model=MODEL,
         max_tokens=2000,
         system=SYSTEM_PROMPT,
-        messages=[{
-            "role": "user",
-            "content": f"<handbook>\n{context}\n</handbook>\n\nQuestion: {question}",
-        }],
+        messages=[
+            {
+                "role": "user",
+                "content": f"<handbook>\n{context}\n</handbook>\n\nQuestion: {question}",
+            }
+        ],
         output_config={"effort": "low"},
         extra_headers={"anthropic-beta": "server-side-fallback-2026-07-01"},
         extra_body={"fallbacks": "default"},

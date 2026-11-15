@@ -37,6 +37,8 @@ pip install -r requirements.txt
 export ANTHROPIC_API_KEY="your-key-here"   # Windows PowerShell: $env:ANTHROPIC_API_KEY="your-key-here"
 ```
 
+4. Read [How we write code in this course](../CODING-RULES.md). It's one page, and it applies to every script you change from today to Day 15.
+
 ## To-do
 
 - [ ] Complete setup and run `code/day09_first_call.py`
